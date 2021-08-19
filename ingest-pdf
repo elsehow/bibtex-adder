@@ -21,10 +21,9 @@ biblib = parse_file(BIBTEX_DIR)
 # check that PDF_DIR exists and is a directory
 assert(isdir(PDF_DIR))
 
+PDF_FILE = sys.argv[1]
 # check that PDF_FILE exists and is a file
 assert(isfile(PDF_FILE))
-
-PDF_FILE = sys.argv[1]
 
 print(f'Adding {PDF_FILE} to library.')
 
