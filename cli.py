@@ -10,9 +10,8 @@ from pybtex.database import parse_file
 from pybtex.database import BibliographyData
 from pybtex.database import Entry
 
-BIBTEX_DIR='tmp/library.bib'
-PDF_DIR='/home/ffff/Programs/mendeley-replacer/tmp/pdf-dir/'
-PDF_FILE='tmp/my-pdf.pdf'
+BIBTEX_DIR='/home/ffff/gdrive/Notes/roam/library.bib'
+PDF_DIR='/home/ffff/gdrive/Notes/pdf/'
 
 # Check that BIBTEX_DIR exists and is readable
 biblib = parse_file(BIBTEX_DIR)
