@@ -1,6 +1,8 @@
 import sys
 from typing import Tuple
 from os.path import join
+from os.path import isdir
+from os.path import isfile
 from ntpath import basename
 from shutil import move
 from pybtex.database import parse_string
@@ -11,6 +13,15 @@ from pybtex.database import Entry
 BIBTEX_DIR='tmp/library.bib'
 PDF_DIR='/home/ffff/Programs/mendeley-replacer/tmp/pdf-dir/'
 PDF_FILE='tmp/my-pdf.pdf'
+
+# Check that BIBTEX_DIR exists and is readable
+biblib = parse_file(BIBTEX_DIR)
+
+# check that PDF_DIR exists and is a directory
+assert(isdir(PDF_DIR))
+
+# check that PDF_FILE exists and is a file
+assert(isfile(PDF_FILE))
 
 PDF_FILE = sys.argv[1]
 
@@ -41,11 +52,8 @@ my_bibtex_entry = '\n'.join(sys.stdin.readlines())
 
 citekey, entry = add_file_to_entry(my_bibtex_entry)
 
-# read bibtex file
-biblib = parse_file(BIBTEX_DIR)
-libkeys = list(biblib.entries)
-
 # check for citation key collisions.
+libkeys = list(biblib.entries)
 if citekey in libkeys:
     raise Exception(f'Cite key {citekey} already in bibtex db! Choose a unique citekey. Not adding entry or moving PDF.')
 
